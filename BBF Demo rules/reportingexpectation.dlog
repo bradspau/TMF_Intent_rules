@@ -1,0 +1,15 @@
+[?List, bbf:trigInList, ?Trigger] :-
+    [?List, rdf:first, ?Trigger] .
+
+[?List, bbf:trigInList, ?Trigger] :-
+    [?List, rdf:rest, ?Rest],
+    [?Rest, bbf:trigInList, ?Trigger] .
+    
+[?Exp, icm:result, true] :-
+    [?Exp, rdf:type, icm:ReportingExpectation],
+    [?Exp, icm:reportTriggers, ?List],
+    [?Ev, imo:eventFor, ?Exp],
+    [?Ev, imo:event, ?Trigger],
+    [?List, bbf:trigInList, ?Trigger] .
+
+
